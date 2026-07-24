@@ -1,0 +1,52 @@
+The expression
+
+Φ(−dUdt)\Phi\left(-\frac{dU}{dt}\right)
+
+has a clean physical interpretation:
+
+Effective Output Rate=Φ×Energy Release Rate\boxed{ \text{Effective Output Rate} = \Phi \times \text{Energy Release Rate} }
+
+where:
+
+U(t)U(t) is stored energy, potential, or another conserved quantity.
+−dUdt-\dfrac{dU}{dt} is the rate at which that quantity is being released.
+Φ\Phi is a dimensionless weighting factor, efficiency, coupling coefficient, or utilization factor.
+Example
+
+Suppose a battery contains stored energy
+
+U(t)=1000e−0.05t J.U(t)=1000e^{-0.05t}\ \text{J}.
+
+Then
+
+−dUdt=50e−0.05t W.-\frac{dU}{dt} = 50e^{-0.05t}\ \text{W}.
+
+If only 80% of the released energy is converted into useful work,
+
+Φ=0.8,\Phi=0.8,
+
+then
+
+Φ(−dUdt)=40e−0.05t W.\Phi\left(-\frac{dU}{dt}\right) = 40e^{-0.05t}\ \text{W}.
+
+At t=0t=0,
+
+40 W40\ \text{W}
+
+of useful power is produced, while
+
+10 W10\ \text{W}
+
+is lost.
+
+Physical analogies
+System	UU	Φ\Phi	Φ(−dU/dt)\Phi(-dU/dt)Battery	Stored electrical energy	Electrical efficiency	Useful output power
+Chemical reaction	Gibbs free energy	Reaction yield	Useful chemical work rate
+Solar panel	Incident solar energy	Conversion efficiency	Electrical power output
+Mechanical system	Potential energy	Transmission efficiency	Delivered mechanical power
+
+Thus,
+
+Φ(−dUdt)\boxed{\Phi\left(-\frac{dU}{dt}\right)}
+
+can be interpreted as the useful power extracted from a reservoir whose stored potential UU is decreasing with time.
