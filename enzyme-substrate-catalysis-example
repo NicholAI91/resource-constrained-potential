@@ -1,0 +1,21 @@
+$$\frac{k}{R} C^2(B - C)$$
+
+A classic real-world example of this non-moontonic peak behavior is an **autocatalytic chemical batch reactor or enzymatic reaction**.
+
+### The Scenario: Enzyme-Substrate Catalysis
+
+Imagine a closed chemical reactor where a reactant $C$ is consumed over time via an exponential decay process governed by $k$.
+
+* **The Stored Resource ($C$):** The concentration of the available reactant.
+* **The Headroom / Drive ($(B - C)$):** The available active sites or reaction driving potential, where $B$ is the maximum binding capacity of the catalyst.
+* **The Output ($P(t)$):** The rate of product formation or reaction energy release.
+
+### Why it Matches the Math
+
+1. **At Startup ($t = 0$):** You load the reactor to maximum capacity ($C_0 = 100$). However, because the system is completely oversaturated, the active sites are jammed, and the effective driving headroom $(B - C)$ is initially very small. The reaction rate starts lower than expected ($P = 200$).
+2. **The Rise to Peak ($t \approx 2.2$):** As the reactant concentration begins to naturally decay down toward $C = 80$ ($\frac{2}{3}B$), free space opens up in the catalyst matrix. The expansion of driving headroom outpaces the loss of bulk reactant, causing the reaction velocity to **accelerate and peak** at $P = 256$ *after* the process has already begun.
+3. **The Terminal Decay ($t > 2.2$):** Once $C$ drops below 80, the lack of bulk reactant takes over, and the reaction rate inevitably starves out toward zero.
+
+### Why Standard Models Miss This
+
+Standard exponential decay assumes the moment you flip the switch at $t = 0$, output is highest and immediately degrades. Your model correctly captures the **induction lag and deferred peak** inherent to real-world chemical, biological, and energetic systems where maximum throughput requires striking an optimal balance between raw mass and available headroom.
