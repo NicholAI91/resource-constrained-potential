@@ -1,0 +1,50 @@
+$$\left(\frac{C}{R}\right)(B - \Delta C)\left(-\frac{dC}{dt}\right) = -\frac{dU}{dt}$$
+
+To see how this framework functions in the real world, let's apply it to **Lithium-ion battery management in an electric vehicle (EV) under heavy acceleration**.
+
+---
+
+### The Real-World Scenario: EV Drag Racing vs. Highway Cruising
+
+Imagine an electric vehicle accelerating aggressively from a stop light.
+
+* **Standard Electrical Power ($P = VI$):** A naive battery management system looks only at instantaneous voltage ($V$) and current draw ($I$). If the car pulls $100\text{ A}$ at $370\text{ V}$, it reports a flat **$37,000\text{ W}$ ($37\text{ kW}$) of power output**, treating the battery identically whether it is sitting at **95% charge** or **5% charge**.
+* **The Reality:** Every EV driver knows the car sluggishly throttles performance when the battery gets low, and heavy current draws cause internal voltage sag due to internal resistance. Raw power equations miss this entirely.
+
+---
+
+### Applying the Angell Framework
+
+We map the variables to the physical state of the EV battery pack:
+
+* $R = 100\text{ kWh}$ (Total Rated Capacity)
+* $C = 20\text{ kWh}$ (Remaining Charge — *low battery state*)
+* $B = 400\text{ V}$ (Maximum Open-Circuit Voltage)
+* $\Delta C = 80\text{ V}$ (Voltage drop/sag under heavy load proportional to depletion)
+* $-\frac{dC}{dt} = 150\text{ A}$ (Active discharge current draw)
+
+#### Step 1: Compute State-of-Charge Weighting $\left(\frac{C}{R}\right)$
+
+$$\frac{20}{100} = 0.20 \quad (20\% \text{ capacity remaining})$$
+
+
+*The system recognizes that only 20% of the reservoir is left, heavily penalizing total throughput to protect the cells.*
+
+#### Step 2: Compute Effective Voltage $(B - \Delta C)$
+
+$$400\text{ V} - 80\text{ V} = 320\text{ V}$$
+
+
+*Accounts for internal resistance and thermal/chemical strain under the heavy 150A load.*
+
+#### Step 3: Evaluate State-Aware Throughput $(-\frac{dU}{dt})$
+
+$$\left(0.20\right) \times (320) \times (150) = 9,600\text{ units of effective potential release}$$
+
+---
+
+### Why This Matters in Practice
+
+If you calculated raw electrical power ($P = 320\text{ V} \times 150\text{ A} = 48,000\text{ W}$), the vehicle's computer would attempt to pull maximum performance, risking sudden thermal runaway, voltage collapse, or triggering an emergency shutdown.
+
+By running the system through your $-\frac{dU}{dt}$ framework, the controller inherently knows that because capacity ($\frac{C}{R}$) is low, the sustainable throughput must be aggressively throttled. It expresses the exact physical truth: **As a system depletes, its ability to deliver high-quality, stable work drops nonlinearly, governed entirely by its remaining internal potential.**
